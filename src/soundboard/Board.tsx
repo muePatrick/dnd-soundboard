@@ -39,7 +39,7 @@ function Board() {
         <div onClick={changeAdresses} className="option">⚙️</div>
         <div className="track">Current track: {currentFile}</div>
         <audio
-          src={localStorage.getItem("httpUrl") || "http://127.0.0.1:4000/" + currentFile}
+          src={(localStorage.getItem("httpUrl") || "http://127.0.0.1:4000/") + currentFile}
           autoPlay loop controls>
         </audio>
       </div>

@@ -25,11 +25,10 @@ let currentTrack = undefined
 wss.on('connection', (ws) => {
 
     ws.on('message', (message) => {
-      console.log('received: %s', message);
+      console.log('New Track: %s', message);
       currentTrack = message
       wss.clients
           .forEach(client => {
-              console.log(client)
               client.send(`${message}`);
           });
     });
