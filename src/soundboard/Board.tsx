@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Board.css";
 import SoundButton from "./SoundButton"
+import { useSelector, useDispatch } from 'react-redux'
 
 function Board() {
   const [files, setFiles] = useState([])
