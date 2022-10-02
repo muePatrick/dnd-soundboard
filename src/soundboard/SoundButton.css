@@ -1,4 +1,4 @@
-/* button {
+button {
   width: 10rem;
   height: 10rem;
 
@@ -21,18 +21,18 @@ button:hover {
   -webkit-box-shadow: 3px 3px 10px 5px #ddd;
   -moz-box-shadow: 3px 3px 10px 5px #ddd;
   box-shadow: 3px 3px 10px 5px #ddd;
-} */
-
-.player {
-  width: fit-content;
-
-  padding: 1em;
-
-  border-radius: 5%;
-  
-  background-color: #ddd;
 }
 
-.option {
-  cursor: pointer;
+.active {
+  background-color: rgb(255, 214, 160) !important;
+
+  -webkit-box-shadow: 3px 3px 10px 0px #ddd !important;
+  -moz-box-shadow: 3px 3px 10px 0px #ddd !important;
+  box-shadow: 3px 3px 10px 0px #ddd !important;
+}
+
+.stop {
+  background-color: rgb(255, 160, 160) !important;
+
+  font-weight: bold;
 }

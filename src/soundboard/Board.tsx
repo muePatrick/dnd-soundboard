@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Board.css";
+import SoundButton from "./SoundButton"
 
 function Board() {
   const [files, setFiles] = useState([])
@@ -17,7 +18,7 @@ function Board() {
       .then((data) => setFiles(data.availableFiles));
   }
 
-  function changeAdresses() {
+  function changeAddresses() {
     const newWsUrl:string = prompt("Enter a new WS URL:") || "ws://127.0.0.1:5000"
     localStorage.setItem("wsUrl", newWsUrl)
     const newHttpUrl:string = prompt("Enter a new HTTP URL:") || "http://127.0.0.1:4000/"
@@ -36,7 +37,7 @@ function Board() {
   return (
     <div className="page">
       <div className="player">
-        <div onClick={changeAdresses} className="option">⚙️</div>
+        <div onClick={changeAddresses} className="option">⚙️</div>
         <div className="track">Current track: {currentFile}</div>
         <audio
           src={(localStorage.getItem("httpUrl") || "http://127.0.0.1:4000/") + currentFile}
@@ -45,20 +46,20 @@ function Board() {
       </div>
 
       <div className="buttons">
-      <button
+      <SoundButton
         key={"nonFile"}
-        className={`stop ${(currentFile=="") ? "active" : ""}`}
-        onClick={( ) => changeCurrentTrack("")}>
-          STOP ALL CLIENTS
-      </button>
+        isActive={currentFile==""}
+        isStop={true}
+        onClick={changeCurrentTrack}
+        file={""}
+        text="STOP ALL CLIENTS" />
         {files.map((file, fileIndex) => (
           <>
-            <button
+            <SoundButton
               key={"file"+fileIndex}
-              className={`${(file==currentFile) ? "active" : ""}`}
-              onClick={( ) => changeCurrentTrack(file)}>
-                {file}
-            </button>
+              isActive={file==currentFile}
+              onClick={changeCurrentTrack}
+              file={file} />
           </>
         ))}
       </div>
